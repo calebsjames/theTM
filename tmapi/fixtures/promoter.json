@@ -1,0 +1,17 @@
+[
+    {
+        "model": "tmapi.promoter",
+        "pk": 1,
+        "fields": {   
+            "address": "3467 Some St.",
+            "cell_phone": "123-345-3451",
+            "city": "Atlanta",
+            "company": "Some Promotion Company",
+            "email": "frank@promotion.com",
+            "name": "Frank Frankerson",
+            "phone": "234-567-5673",
+            "state": "GA",
+            "zip": "30329"
+        }
+    }
+]

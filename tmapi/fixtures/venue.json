@@ -1,0 +1,23 @@
+[
+    {
+        "model": "tmapi.venue",
+        "pk": 1,
+        "fields": {   
+            "address": "123 Venue Way",
+            "capacity": 500,
+            "city": "Atlanta",
+            "email": "booking@venue.com",
+            "hall_fee": 0,
+            "phone": "345-234-5634",
+            "website": "www.venue.com",
+            "merch_sales": "Artist",
+            "merch_fee": "None",
+            "name": "The Farm",
+            "state": "GA",
+            "zip": "30323"             
+        }
+    }
+]
+
+
+    

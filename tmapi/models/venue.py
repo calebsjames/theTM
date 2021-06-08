@@ -10,7 +10,7 @@ class Venue(models.Model):
     phone = models.CharField(max_length=100)
     website = models.CharField(max_length=100)
     merch_sales = models.CharField(max_length=100)
-    merch_fee = models.CharField(max_length=100)
+    merch_fee = models.IntegerField()
     name = models.CharField(max_length=100)
     state = models.CharField(max_length=2)
     zip = models.CharField(max_length=15)

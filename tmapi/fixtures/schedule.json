@@ -1,0 +1,14 @@
+[
+    {
+        "model": "tmapi.schedule",
+        "pk": 1,
+        "fields": {   
+            "date": "2021-03-01",
+            "description": "Bus Call",
+            "show": 1,
+            "time": "06:00"                    
+        }
+    }
+]
+  
+    
