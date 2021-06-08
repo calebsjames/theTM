@@ -109,5 +109,7 @@ class VenueView(ViewSet):
 class VenueSerializer(serializers.ModelSerializer):   
     class Meta:
         model = Venue
-        fields = ('id', 'content', 'post', 'created_on', 'author')
-        depth = 1
+        fields = (
+            'id', 'address', 'capacity', 'email', 'hall_fee', 'merch_sales',
+             'merch_fee', 'name', 'phone', 'state', 'website', 'zip')
+        
