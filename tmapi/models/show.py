@@ -3,7 +3,7 @@ from django.db import models
 class Show(models.Model):      
     
     advanced = models.BooleanField()
-    ages = models.IntegerField()
+    ages = models.CharField(max_length=30)
     artist = models.CharField(max_length=100)
     billing = models.CharField(max_length=30)
     bus_call = models.TimeField()

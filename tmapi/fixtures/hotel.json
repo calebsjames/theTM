@@ -1,0 +1,13 @@
+[
+    {
+        "model": "tmapi.hotel",
+        "pk": 1,
+        "fields": {   
+            "address": "2920 Clairmont Rd, Atlanta, GA 30329",
+            "confirmation": "123456",
+            "name": "Holiday Inn Express",
+            "notes": "Park in back",
+            "phone": "805-659-3833"            
+        }
+    }
+]
