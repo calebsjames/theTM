@@ -4,7 +4,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 from django.views.decorators.csrf import csrf_exempt
-from tmapi.models import User
+from django.contrib.auth.models import User
 from rest_framework.decorators import permission_classes, api_view
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response

@@ -3,7 +3,8 @@ from django.http import HttpResponseServerError
 from rest_framework import serializers, status
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
-from tmapi.models import Show, Hotel, Promoter, Venue, User 
+from django.contrib.auth.models import User
+from tmapi.models import Show, Hotel, Promoter, Venue 
 
 
 
