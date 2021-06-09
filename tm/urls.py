@@ -2,7 +2,7 @@ from django.conf.urls import include
 from django.urls import path
 from rest_framework import routers
 from tmapi.views.auth import register_user, login_user
-from tmapi.views import ContactNoteView, HotelView, PromoterView, ScheduleView, ShowView, VenueView
+from tmapi.views import ContactNoteView, HotelView, PromoterView, ScheduleView, ShowView, VenueView, UserView
 
 router = routers.DefaultRouter(trailing_slash=False)
 
@@ -12,7 +12,7 @@ router.register(r'promoters', PromoterView, 'promoter')
 router.register(r'schedules', ScheduleView, 'schedule')
 router.register(r'shows', ShowView, 'show')
 router.register(r'venues', VenueView, 'venue')
-# router.register(r'users', VenueView, 'venue')
+router.register(r'users', UserView, 'user')
 
 urlpatterns = [
     path('', include(router.urls)),
