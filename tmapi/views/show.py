@@ -3,7 +3,7 @@ from django.http import HttpResponseServerError
 from rest_framework import serializers, status
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
-from tmapi.models import Show, Hotel, Promoter, Venue
+from tmapi.models import Show, Hotel, Promoter, Venue, User 
 
 
 
@@ -178,7 +178,7 @@ class ShowSerializer(serializers.ModelSerializer):
         fields = (
             'id', 'advanced', 'ages', 'artist', 'billing', 'bus_call', 'contracted', 'contract_signed', 
             'comments', 'curfew', 'date', 'date_on_calendar', 'date_on_venue_site', 'date_on_artist_site', 
-            'date_on_socials', 'deposit', 'deposit_paid', 'door_price', 'door_time', 'drive_', 
+            'date_on_socials', 'deposit', 'deposit_paid', 'door_price', 'door_time', 'drive_time', 
             'gross_income', 'guarantee', 'guest_list', 'guest_list_sent', 'hotel', 'load_in', 
             'miles_to_drive', 'promoter', 'routing', 'routing_notes', 'runner', 'show_length', 'show_time', 
             'sound_check', 'support', 'status', 'terms', 'ticket_sales', 'user', 'venue', 'weather' 

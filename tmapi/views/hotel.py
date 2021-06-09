@@ -75,7 +75,7 @@ class HotelView(ViewSet):
 
     # DELETE a single record 
     def destroy(self, request, pk=None):
-        """Handle DELETE requests for a single game
+        """DELETE requests for a single game
         Returns:
             Response -- 200, 404, or 500 status code
         """

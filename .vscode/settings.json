@@ -1,3 +1,11 @@
 {
-    "python.pythonPath": "/Users/calebjames/.local/share/virtualenvs/tm-api-faXGTCta/bin/python"
+    "python.pythonPath": "/Users/calebjames/.local/share/virtualenvs/tm-api-faXGTCta/bin/python",
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:tm-backend}/db.sqlite3",
+            "name": "db"
+        }
+    ]
 }

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Show(models.Model):      
     
@@ -39,6 +40,6 @@ class Show(models.Model):
     status = models.CharField(max_length=30)
     terms = models.CharField(max_length=30)
     ticket_sales = models.IntegerField()
-    user = models.ForeignKey("User", on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     venue = models.ForeignKey("Venue", on_delete=models.CASCADE) 
     weather = models.CharField(max_length=50)
