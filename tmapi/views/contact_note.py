@@ -100,4 +100,5 @@ class ContactNoteSerializer(serializers.ModelSerializer):
         model = ContactNote
         fields = (
             'id', 'date', 'method', 'text', 'venue')
+        depth = 1
         
