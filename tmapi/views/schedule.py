@@ -3,19 +3,19 @@ from django.http import HttpResponseServerError
 from rest_framework import serializers, status
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
-from tmapi.models import ContactNote, Venue
+from tmapi.models import Schedule, Show
 
 
 
-class ContactNoteView(ViewSet):
+class ScheduleView(ViewSet):
 
     def retrieve(self, request, pk=None):
         """Get a single record"""
         try:
-            contact_note = ContactNote.objects.get(pk=pk)
+            schedule = Schedule.objects.get(pk=pk)
             # categories = Category.objects.filter(categorygame__)
 
-            serializer = ContactNoteSerializer(contact_note, context={'request': request})
+            serializer = ScheduleSerializer(schedule, context={'request': request})
             return Response(serializer.data)
 
         except Exception as ex:
@@ -24,32 +24,32 @@ class ContactNoteView(ViewSet):
 
     # Get a list of all records
     def list(self, request):
-        contact_notes = ContactNote.objects.all()
+        schedules = Schedule.objects.all()
 
 
-        serializer = ContactNoteSerializer(
-            contact_notes, many=True, context={'request': request})
+        serializer = ScheduleSerializer(
+            schedules, many=True, context={'request': request})
         return Response(serializer.data)
 
 
     # Create a record
     def create(self, request):
-        """Handle POST operations for contact_notes
+        """Handle POST operations for schedules
 
         Returns:
             Response -- JSON serialized event instance
         """
-        contact_note = ContactNote()
-        contact_note.date = request.data["date"]
-        contact_note.method = request.data["method"]
-        contact_note.text = request.data["text"]
+        schedule = Schedule()
+        schedule.date = request.data["date"]
+        schedule.description = request.data["description"]
+        schedule.time = request.data["time"]
 
-        venue = Venue.objects.get(pk=request.data["venue"])
-        contact_note.venue = venue
+        show = Show.objects.get(pk=request.data["show"])
+        schedule.show = show
 
         try:
-            contact_note.save()
-            serializer = ContactNoteSerializer(contact_note, context={'request': request})
+            schedule.save()
+            serializer = ScheduleSerializer(schedule, context={'request': request})
             return Response(serializer.data)
         except ValidationError as ex:
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
@@ -60,17 +60,17 @@ class ContactNoteView(ViewSet):
         Returns:
             Response -- Empty body with 204 status code
         """
-        contact_note = ContactNote.objects.get(pk=pk)
+        schedule = Schedule.objects.get(pk=pk)
 
-        contact_note = ContactNote()
-        contact_note.date = request.data["date"]
-        contact_note.method = request.data["method"]
-        contact_note.text = request.data["text"]
+        schedule = Schedule()
+        schedule.date = request.data["date"]
+        schedule.description = request.data["description"]
+        schedule.time = request.data["time"]
 
-        venue = Venue.objects.get(pk=request.data["venue"])
-        contact_note.venue = venue
+        show = Show.objects.get(pk=request.data["show"])
+        schedule.show = show
 
-        contact_note.save()
+        schedule.save()
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
 
@@ -82,12 +82,12 @@ class ContactNoteView(ViewSet):
             Response -- 200, 404, or 500 status code
         """
         try:
-            contact_note = ContactNote.objects.get(pk=pk)
-            contact_note.delete()
+            schedule = Schedule.objects.get(pk=pk)
+            schedule.delete()
 
             return Response({}, status=status.HTTP_204_NO_CONTENT)
 
-        except ContactNote.DoesNotExist as ex:
+        except Schedule.DoesNotExist as ex:
             return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
 
         except Exception as ex:
@@ -95,9 +95,9 @@ class ContactNoteView(ViewSet):
 
 
 
-class ContactNoteSerializer(serializers.ModelSerializer):   
+class ScheduleSerializer(serializers.ModelSerializer):   
     class Meta:
-        model = ContactNote
+        model = Schedule
         fields = (
             'id', 'date', 'method', 'text', 'venue')
         depth = 1
