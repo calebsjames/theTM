@@ -13,10 +13,10 @@ class UserView(ViewSet):
     # Get a single record
     def retrieve(self, request, pk=None):
         try:
-            rare_user = RareUser.objects.get(pk=pk)
+            user = User.objects.get(pk=pk)
             # categories = Category.objects.filter(categorygame__)
             
-            serializer = RareUserSerializer(rare_user, context={'request': request})
+            serializer = UserSerializer(user, context={'request': request})
             return Response(serializer.data)
         
         except Exception as ex:
@@ -25,10 +25,10 @@ class UserView(ViewSet):
 
     # # Get a list of all records
     def list(self, request):
-        users = RareUser.objects.all()
+        users = User.objects.all()
         
 
-        serializer = RareUserSerializer(
+        serializer = UserSerializer(
             users, many=True, context={'request': request})
         return Response(serializer.data)
     
@@ -41,11 +41,14 @@ class UserView(ViewSet):
             Response -- Empty body with 204 status code
         """
         # gamer = Gamer.objects.get(user=request.auth.user)
-        user = RareUser.objects.get(pk=pk)
-        user.bio = request.data["bio"]
-        user.profile_image_url = request.data["profile_image_url"]
-        user.created_on = request.data["created_on"]
-        user.active = request.data["active"]
+        user = User.objects.get(pk=pk)
+        user.email = request.data["email"]
+        user.first_name = request.data["first_name"]
+        user.is_staff = request.data["is_staff"]
+        user.is_superuser = request.data["is_superuser"]
+        user.last_name = request.data["last_name"]
+        user.password = request.data["password"]
+        user.username = request.data["username"]
         
         user.save()
     
@@ -60,12 +63,12 @@ class UserView(ViewSet):
             Response -- 200, 404, or 500 status code
         """
         try:
-            user = RareUser.objects.get(pk=pk)
+            user = User.objects.get(pk=pk)
             user.delete()
 
             return Response({}, status=status.HTTP_204_NO_CONTENT)
 
-        except RareUser.DoesNotExist as ex:
+        except User.DoesNotExist as ex:
             return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
 
         except Exception as ex:
@@ -75,12 +78,6 @@ class UserView(ViewSet):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'first_name', 'last_name', 'username', 'is_staff', 'email')
+        fields = ('id', 'email', 'first_name', 'is_staff', 'is_superuser', 'last_name', 'password', 'username')
         
-
-class RareUserSerializer(serializers.ModelSerializer):
-    user = UserSerializer(many=False)   
-    class Meta:
-        model = RareUser
-        fields = ('id', 'bio', 'profile_image_url', 'created_on', 'active', 'user')
         
