@@ -62,7 +62,6 @@ class ContactNoteView(ViewSet):
         """
         contact_note = ContactNote.objects.get(pk=pk)
 
-        contact_note = ContactNote()
         contact_note.date = request.data["date"]
         contact_note.method = request.data["method"]
         contact_note.text = request.data["text"]

@@ -62,7 +62,6 @@ class ScheduleView(ViewSet):
         """
         schedule = Schedule.objects.get(pk=pk)
 
-        schedule = Schedule()
         schedule.date = request.data["date"]
         schedule.description = request.data["description"]
         schedule.time = request.data["time"]
