@@ -12,6 +12,7 @@ router.register(r'promoters', PromoterView, 'promoter')
 router.register(r'schedules', ScheduleView, 'schedule')
 router.register(r'shows', ShowView, 'show')
 router.register(r'venues', VenueView, 'venue')
+# router.register(r'users', VenueView, 'venue')
 
 urlpatterns = [
     path('', include(router.urls)),
