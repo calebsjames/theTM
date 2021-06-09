@@ -7,7 +7,7 @@
             "capacity": 500,
             "city": "Atlanta",
             "email": "booking@venue.com",
-            "hall_fee": 0,
+            "hall_fee": "0",
             "phone": "345-234-5634",
             "website": "www.venue.com",
             "merch_sales": "Artist",

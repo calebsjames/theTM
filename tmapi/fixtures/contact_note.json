@@ -1,6 +1,6 @@
 [
     {
-        "model": "tmapi.contact_note",
+        "model": "tmapi.contactnote",
         "pk": 1,
         "fields": {   
             "date": "2021-01-01",
@@ -10,7 +10,7 @@
         }
     },
     {
-        "model": "tmapi.contact_note",
+        "model": "tmapi.contactnote",
         "pk": 2,
         "fields": {   
             "date": "2021-01-02",

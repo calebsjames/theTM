@@ -7,3 +7,4 @@ class Hotel(models.Model):
     name = models.CharField(max_length=100)
     notes = models.CharField(max_length=500)
     phone = models.CharField(max_length=30)
+    
