@@ -5,11 +5,10 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
-from rareapi.models import RareUser
 from django.contrib.auth.models import User
 
 
-class RareUserView(ViewSet):
+class UserView(ViewSet):
     
     # Get a single record
     def retrieve(self, request, pk=None):

@@ -98,6 +98,6 @@ class ScheduleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Schedule
         fields = (
-            'id', 'date', 'method', 'text', 'venue')
+            'id', 'date', 'description', 'time', 'show')
         depth = 1
         
