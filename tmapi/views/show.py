@@ -78,14 +78,17 @@ class ShowView(ViewSet):
         show.ticket_sales = request.data["ticket_sales"]
         show.weather = request.data["weather"]
 
-        hotel = Hotel.objects.get(pk=request.data["hotel"])
-        show.hotel = hotel
-        promoter = Promoter.objects.get(pk=request.data["promoter"])
-        show.promoter = promoter
-        user = User.objects.get(pk=request.data["user"])
-        show.user = user
-        venue = Venue.objects.get(pk=request.data["venue"])
-        show.venue = venue
+        
+
+
+        show.hotel = Hotel.objects.create()
+        
+        show.promoter = Promoter.objects.create()
+        
+        # user = User.objects.get(pk=request.data["user"])
+        
+        # venue = Venue.objects.get(pk=request.data["venue"])
+        
 
         try:
             show.save()
@@ -139,14 +142,6 @@ class ShowView(ViewSet):
         show.ticket_sales = request.data["ticket_sales"]
         show.weather = request.data["weather"]
 
-        hotel = Hotel.objects.get(pk=request.data["hotel"])
-        show.hotel = hotel
-        promoter = Promoter.objects.get(pk=request.data["promoter"])
-        show.promoter = promoter
-        user = User.objects.get(pk=request.data["user"])
-        show.user = user
-        venue = Venue.objects.get(pk=request.data["venue"])
-        show.venue = venue
 
         show.save()
 
