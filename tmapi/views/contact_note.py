@@ -3,7 +3,7 @@ from django.http import HttpResponseServerError
 from rest_framework import serializers, status
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
-from tmapi.models import ContactNote, Venue
+from tmapi.models import ContactNote, Show
 
 
 
@@ -44,8 +44,8 @@ class ContactNoteView(ViewSet):
         contact_note.method = request.data["method"]
         contact_note.text = request.data["text"]
 
-        venue = Venue.objects.get(pk=request.data["venue"])
-        contact_note.venue = venue
+        show = Show.objects.get(pk=request.data['show'])
+        contact_note.show = show
 
         try:
             contact_note.save()
@@ -66,8 +66,8 @@ class ContactNoteView(ViewSet):
         contact_note.method = request.data["method"]
         contact_note.text = request.data["text"]
 
-        venue = Venue.objects.get(pk=request.data["venue"])
-        contact_note.venue = venue
+        show = Show.objects.get(pk=request.data["show"])
+        contact_note.show = show
 
         contact_note.save()
 
@@ -98,6 +98,6 @@ class ContactNoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactNote
         fields = (
-            'id', 'date', 'method', 'text', 'venue')
+            'id', 'date', 'method', 'text', 'show')
         depth = 1
         

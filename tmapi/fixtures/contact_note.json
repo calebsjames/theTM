@@ -6,7 +6,7 @@
             "date": "2021-01-01",
             "method": "Phone",
             "text": "1st contact",
-            "venue": 1
+            "show": 1
         }
     },
     {
@@ -16,7 +16,7 @@
             "date": "2021-01-02",
             "method": "Email",
             "text": "2nd contact",
-            "venue": 1
+            "show": 1
         }
     }
 ]

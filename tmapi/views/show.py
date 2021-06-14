@@ -77,17 +77,6 @@ class ShowView(ViewSet):
         show.terms = request.data["terms"]
         show.ticket_sales = request.data["ticket_sales"]
         show.weather = request.data["weather"]
-
-        
-
-
-        show.hotel = Hotel.objects.create()
-        
-        show.promoter = Promoter.objects.create()
-        
-        # user = User.objects.get(pk=request.data["user"])
-        
-        # venue = Venue.objects.get(pk=request.data["venue"])
         
 
         try:
