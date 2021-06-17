@@ -43,6 +43,7 @@ class PromoterView(ViewSet):
         promoter.address = request.data["address"]
         promoter.cell_phone = request.data["cell_phone"]
         promoter.city = request.data["city"]
+        promoter.comments = request.data["comments"]
         promoter.company = request.data["company"]
         promoter.email = request.data["email"]
         promoter.name = request.data["name"]
@@ -68,6 +69,7 @@ class PromoterView(ViewSet):
         promoter.address = request.data["address"]
         promoter.cell_phone = request.data["cell_phone"]
         promoter.city = request.data["city"]
+        promoter.comments = request.data["comments"]
         promoter.company = request.data["company"]
         promoter.email = request.data["email"]
         promoter.name = request.data["name"]
@@ -103,5 +105,5 @@ class PromoterView(ViewSet):
 class PromoterSerializer(serializers.ModelSerializer):   
     class Meta:
         model = Promoter
-        fields = ('id', 'address', 'cell_phone', 'city', 'company', 'email', 'name', 'phone', 'state', 'zip')
+        fields = ('id', 'address', 'cell_phone', 'city', 'comments', 'company', 'email', 'name', 'phone', 'state', 'zip')
         

@@ -42,6 +42,7 @@ class VenueView(ViewSet):
         venue = Venue()
         venue.address = request.data["address"]
         venue.capacity = request.data["capacity"]
+        venue.cell = request.data["cell"]
         venue.city = request.data["city"]
         venue.email = request.data["email"]
         venue.hall_fee = request.data["hall_fee"]
@@ -70,6 +71,7 @@ class VenueView(ViewSet):
 
         venue.address = request.data["address"]
         venue.capacity = request.data["capacity"]
+        venue.cell = request.data["cell"]
         venue.city = request.data["city"]
         venue.email = request.data["email"]
         venue.hall_fee = request.data["hall_fee"]
@@ -110,6 +112,6 @@ class VenueSerializer(serializers.ModelSerializer):
     class Meta:
         model = Venue
         fields = (
-            'id', 'address', 'capacity', 'city', 'email', 'hall_fee', 'merch_sales',
+            'id', 'address', 'capacity', 'cell', 'city', 'email', 'hall_fee', 'merch_sales',
              'merch_fee', 'name', 'phone', 'state', 'website', 'zip')
         

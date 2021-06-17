@@ -6,7 +6,7 @@ from tmapi.views import ContactNoteView, HotelView, PromoterView, ScheduleView, 
 
 router = routers.DefaultRouter(trailing_slash=False)
 
-router.register(r'contactnotes', ContactNoteView, 'contactnote')
+router.register(r'contactNotes', ContactNoteView, 'contactnote')
 router.register(r'hotels', HotelView, 'hotel')
 router.register(r'promoters', PromoterView, 'promoter')
 router.register(r'schedules', ScheduleView, 'schedule')

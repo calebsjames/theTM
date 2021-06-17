@@ -4,6 +4,8 @@ class Venue(models.Model):
 
     address = models.CharField(max_length=100)
     capacity = models.IntegerField()
+    cell = models.CharField(max_length=100)
+    contact = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     hall_fee = models.IntegerField()

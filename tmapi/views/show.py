@@ -25,7 +25,7 @@ class ShowView(ViewSet):
 
     # Get a list of all records
     def list(self, request):
-        shows = Show.objects.all()
+        shows = Show.objects.filter(user=request.auth.user)
 
 
         serializer = ShowSerializer(
@@ -66,6 +66,8 @@ class ShowView(ViewSet):
         show.guest_list_sent = request.data["guest_list_sent"]
         show.load_in = request.data["load_in"]
         show.miles_to_drive = request.data["miles_to_drive"]
+        show.public_private = request.data["public_private"]
+        show.promo_materials_sent = request.data["promo_materials_sent"]
         show.routing = request.data["routing"]
         show.routing_notes = request.data["routing_notes"]
         show.runner = request.data["runner"]
@@ -77,15 +79,15 @@ class ShowView(ViewSet):
         show.terms = request.data["terms"]
         show.ticket_sales = request.data["ticket_sales"]
         show.weather = request.data["weather"]
+        show.user = request.auth.user
 
         
 
 
         show.hotel = Hotel.objects.create()
         
-        show.promoter = Promoter.objects.create()
         
-        # user = User.objects.get(pk=request.data["user"])
+        
         
         # venue = Venue.objects.get(pk=request.data["venue"])
         
@@ -130,6 +132,8 @@ class ShowView(ViewSet):
         show.guest_list_sent = request.data["guest_list_sent"]
         show.load_in = request.data["load_in"]
         show.miles_to_drive = request.data["miles_to_drive"]
+        show.public_private = request.data["public_private"]
+        show.promo_materials_sent = request.data["promo_materials_sent"]
         show.routing = request.data["routing"]
         show.routing_notes = request.data["routing_notes"]
         show.runner = request.data["runner"]
@@ -141,7 +145,14 @@ class ShowView(ViewSet):
         show.terms = request.data["terms"]
         show.ticket_sales = request.data["ticket_sales"]
         show.weather = request.data["weather"]
+        
+        if request.data["promoter"] is not None:
+            show.promoter = Promoter.objects.get(pk=request.data["promoter"]["id"])
 
+        if request.data["venue"] is not None:
+            show.venue = Venue.objects.get(pk=request.data["venue"]["id"])
+        
+        show.hotel = Hotel.objects.get(pk=request.data["hotel"]["id"])
 
         show.save()
 
@@ -172,12 +183,12 @@ class ShowSerializer(serializers.ModelSerializer):
     class Meta:
         model = Show
         fields = (
-            'id', 'advanced', 'ages', 'artist', 'billing', 'bus_call', 'contracted', 'contract_signed', 
+            'id', 'advanced', 'ages', 'artist', 'billing', 'bus_call', 'comments', 'contracted', 'contract_signed', 
             'comments', 'curfew', 'date', 'date_on_calendar', 'date_on_venue_site', 'date_on_artist_site', 
             'date_on_socials', 'deposit', 'deposit_paid', 'door_price', 'door_time', 'drive_time', 
             'gross_income', 'guarantee', 'guest_list', 'guest_list_sent', 'hotel', 'load_in', 
-            'miles_to_drive', 'promoter', 'routing', 'routing_notes', 'runner', 'show_length', 'show_time', 
-            'sound_check', 'support', 'status', 'terms', 'ticket_sales', 'user', 'venue', 'weather' 
+            'miles_to_drive', 'promoter', 'promo_materials_sent', 'public_private', 'routing', 'routing_notes', 'runner', 'show_length', 'show_time', 
+            'sound_check', 'support', 'status', 'terms', 'ticket_sales', 'user', 'venue', 'weather'
 )
         depth = 1
         
