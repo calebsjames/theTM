@@ -71,6 +71,7 @@ class VenueView(ViewSet):
 
         venue.address = request.data["address"]
         venue.capacity = request.data["capacity"]
+        venue.contact = request.data["contact"]
         venue.cell = request.data["cell"]
         venue.city = request.data["city"]
         venue.email = request.data["email"]
